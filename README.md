@@ -1,2 +1,2 @@
 # food-radar
-A simple food listing app
+A simple food listing app using Ruby
