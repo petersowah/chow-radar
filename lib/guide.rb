@@ -13,10 +13,10 @@ class Guide
     # locate the restaurant text file at path
     Restaurant.filepath = path
     if Restaurant.file_usable?
-      puts "Found restaurant file."
+      puts "Found restaurant.txt file."
       # or create a new file
     elsif Restaurant.create_file
-      puts "Created restaurant file."
+      puts "Created restaurant.txt file."
       # exit if create fails
     else
       puts "Exiting.\n\n"
@@ -66,7 +66,7 @@ class Guide
   end
 
   def list
-    puts "\n Listing restaurants... \n\n".upcase
+    puts "\n Listing joints... \n\n".upcase
 
     restaurants = Restaurant.saved_restaurants
     restaurants.each do |restaurant|
@@ -79,17 +79,15 @@ class Guide
   end
 
   def add
-    puts "\n Add a restaurant \n\n".upcase
+    puts "\n Add a joint\n\n".upcase
 
     restaurant = Restaurant.build_query
 
     if restaurant.save
-      puts "\nRestaurant added to listing!\n\n"
+      puts "\nJoint added to listing!\n\n"
     else
-      puts "\nError: Restaurant not added.\n\n"
+      puts "\nError: Joint not added.\n\n"
     end
-
-
   end
 
   def introduction

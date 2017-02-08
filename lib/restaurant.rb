@@ -44,9 +44,9 @@ class Restaurant
     return restaurants
   end
 
-  def self.build_using_questions
+  def self.build_query
     args = {}
-    print 'Enter Restaurant name: '
+    print 'Enter Joint name: '
     args[:name] = gets.chomp.strip
 
     print 'Enter Cuisine type: '
