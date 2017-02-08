@@ -1,4 +1,7 @@
+require 'helpers/number_helper'
+
 class Restaurant
+  include NumberHelper
 
   @@filepath = nil
   def self.filepath=(path=nil)
@@ -53,7 +56,7 @@ class Restaurant
     args[:cuisine] = gets.chomp.strip
 
     print 'Enter Average price: '
-    args[:price] = gets.chomp.strip
+    args[:price] = gets.chomp.strip.to_i
 
     print 'Enter Location: '
     args[:location] = gets.chomp.strip
@@ -80,6 +83,10 @@ class Restaurant
       file.puts "#{[@name, @cuisine, @price, @location].join("\t")}\n"
     end
     return true
+  end
+
+  def formatted_price
+    number_to_currency(@price)
   end
 
 end

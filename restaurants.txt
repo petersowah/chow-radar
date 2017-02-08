@@ -3,3 +3,6 @@ Becky's Kitchen	Continental	80	Trasacco
 Ultimate	Local	10	TN 
 Daavi's Chow	Chinese	40	East Legon 
 Testing	testing	0	Testing
+bosphorous	fast food	40	labone
+foo	bar	baz	asa
+Paa nii	fufu	0	Nima

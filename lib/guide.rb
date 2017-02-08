@@ -1,4 +1,6 @@
 require 'restaurant'
+require 'helpers/string_extend'
+
 class Guide
 
   class Config
@@ -69,9 +71,7 @@ class Guide
     puts "\n Listing joints... \n\n".upcase
 
     restaurants = Restaurant.saved_restaurants
-    restaurants.each do |restaurant|
-      puts restaurant.name + ' | ' + restaurant.cuisine + ' | ' + restaurant.location + ' | ' + restaurant.price
-    end
+    output_restaurant_table(restaurants)
   end
 
   def find
@@ -79,7 +79,7 @@ class Guide
   end
 
   def add
-    puts "\n Add a joint\n\n".upcase
+    output_action_header('Add a joint')
 
     restaurant = Restaurant.build_query
 
@@ -97,6 +97,28 @@ class Guide
 
   def conclusion
     puts "\n<<< Goodbye and enjoy your meal! >>>\n\n\n"
+  end
+  
+  private
+  def output_action_header(text)
+    puts "\n#{text.upcase.center(60)}\n\n"
+  end
+
+  def output_restaurant_table(restaurants=[])
+    print " " + "Name".ljust(30)
+    print " " + "Cuisine".ljust(20)
+    print " " + "Price".ljust(6)
+    print " " + "Location".rjust(20)+ "\n"
+    puts "-" * 81
+    restaurants.each do |restaurant|
+      line =  " " << restaurant.name.titleize.ljust(30)
+      line << " " + restaurant.cuisine.titleize.ljust(20)
+      line << " " + restaurant.formatted_price.ljust(6)
+      line << " " + restaurant.location.titleize.rjust(20)
+      puts line
+    end
+    puts "No joints found" if restaurants.empty?
+    puts "-" * 81
   end
 
 end
