@@ -35,6 +35,28 @@ class Restaurant
     # return instances of restaurant
   end
 
+  def self.build_query
+    args = {}
+
+    print "\n Enter restaurant name: "
+    args[:name] = gets.chomp
+    print "\n Enter cuisine type: "
+    args[:cuisine] = gets.chomp
+    print "\n Enter restaurant location: "
+    args[:location] = gets.chomp
+    print "\n Enter restaurant average price: "
+    args[:price] = gets.chomp
+
+    return self.new(args)
+  end
+
+  def initialize(args = {})
+    @name = args[:name] || ''
+    @cuisine = args[:cuisine] || ''
+    @location = args[:location] || ''
+    @price = args[:price] || ''
+  end
+
   def save
     return false unless Restaurant.file_usable?
 
